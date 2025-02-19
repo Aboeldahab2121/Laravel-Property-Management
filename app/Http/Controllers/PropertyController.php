@@ -1,47 +1,38 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Http\Requests\PatchPropertyRequest;
 use App\Http\Requests\PostPropertyRequest;
 use App\Models\Property;
-use Illuminate\http\Request;
-use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Response;
 
 class PropertyController extends Controller
 {
-    //showing the data stored in database "Get"
-    public function get($id){
-        // change it
-        $property = Property::findOrFail($id);
-        return response()->json($property , 200);
+    public function index(){
+
+        return response()->json(Property::all());
     }
 
-    //Creating the data stored in database "Post"
     public function store(PostPropertyRequest $request){
 
-
-
-        //creating a new Property
-        $property = new Property($request->all());
-
-//        $property->title -> $title;
-//        $property->description -> $description;
-//        $property->price -> $price;
-//        $property->location -> $location;
-//        $property->status -> $status;
-
-        $property->save();
-
-        return response()->json(["Message" => "Property Successfully Created"], 201);
+        $property = Property::create($request -> validated());
+        return response()->json($property , Response::HTTP_CREATED);
     }
 
-    // Editing a single property
-    public function update(){
+    public function show (Property $property){
 
+        return response()->json($property);
     }
 
-    // Deleting a single property
-    public function destroy(){
+    public function update(PatchPropertyRequest $request, Property $property)
+    {
+        $property->update($request->validated());
+        return response()->json($property);
+    }
 
+    public function destroy(Property $property){
+
+        $property->delete();
+        return response()->json(Response::HTTP_NO_CONTENT);
     }
 }

@@ -1,5 +1,6 @@
 <?php
 
+use App\Enums\PropertyStatus;
 use App\Http\Controllers\PropertyController;
 use Illuminate\Support\Facades\Route;
 
@@ -7,8 +8,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('\test\{id}', [PropertyController::class, 'get']);
-Route::post('\test', [PropertyController::class, 'store']);
-Route::put('\test\{id}', [PropertyController::class, 'update']);
-Route::delete('\test{id}', [PropertyController::class, 'destroy']);
+Route::get('/PropertyStatusEnum', function () {
+    return response()->json([
+        'statuses' => PropertyStatus::values()
+    ]);
+});
+
 
