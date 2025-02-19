@@ -8,10 +8,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/PropertyStatusEnum', function () {
-    return response()->json([
-        'statuses' => PropertyStatus::values()
-    ]);
-});
+
 
 

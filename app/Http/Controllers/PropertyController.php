@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Enums\PropertyStatus;
 use App\Http\Requests\PatchPropertyRequest;
 use App\Http\Requests\PostPropertyRequest;
 use App\Models\Property;
@@ -35,4 +36,9 @@ class PropertyController extends Controller
         $property->delete();
         return response()->json(Response::HTTP_NO_CONTENT);
     }
+
+    public function statuses(){
+        return response()->json(['statuses' => PropertyStatus::values()]);
+    }
+
 }
