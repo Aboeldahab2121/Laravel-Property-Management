@@ -21,7 +21,7 @@ class PatchPropertyRequest extends FormRequest
             'description' => 'sometimes|string',
             'price' => 'sometimes|numeric|min:0',
             'location' => 'sometimes|string',
-            'status' => [ 'sometimes|string', 'in:' . implode(',', PropertyStatus::values())],
+            'status' => [ 'sometimes','string', 'in:' . implode(',', PropertyStatus::values())],
         ];
     }
 }
