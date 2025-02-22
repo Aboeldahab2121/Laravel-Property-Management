@@ -17,6 +17,7 @@ class PropertyController extends Controller
     public function store(PostPropertyRequest $request){
 
         $property = Property::create($request -> validated());
+        // dispatch
         return response()->json($property , Response::HTTP_CREATED);
     }
 
@@ -40,5 +41,4 @@ class PropertyController extends Controller
     public function statuses(){
         return response()->json(['statuses' => PropertyStatus::values()]);
     }
-
 }
