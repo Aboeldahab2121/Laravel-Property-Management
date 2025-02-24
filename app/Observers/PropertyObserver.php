@@ -24,7 +24,7 @@ class PropertyObserver
         if($property->isDirty('status')){
             $newStatus = $property->status;
             $oldStatus = $property->getOriginal('status');
-            $logMessage = "Property {$property->title} of ID: {$property->id} Status Updated from {$oldStatus} to {$newStatus} on DATETIME {$Datetime}";
+            $logMessage = "Property {$property->title} of ID: {$property->id} Status Updated from {$oldStatus} to {$newStatus} on {$Datetime}";
             Log::info($logMessage);
         }
     }
