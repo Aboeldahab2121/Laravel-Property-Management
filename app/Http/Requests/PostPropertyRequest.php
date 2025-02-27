@@ -19,7 +19,7 @@ class PostPropertyRequest extends FormRequest
             'description' => 'required|string',
             'price' => 'required|numeric|min:0',
             'location' => 'required|string',
-            'status' => ['required', 'string', 'in:' . implode(',', PropertyStatus::values())],
+            'status' => ['required', 'string', 'in:'.implode(',', PropertyStatus::values())],
         ];
     }
 }

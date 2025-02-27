@@ -15,10 +15,11 @@ return new class extends Migration
             $table->text('description');
             $table->decimal('price');
             $table->string('location');
-            $table->enum('status' , PropertyStatus::values()); // validation Using Enums
+            $table->enum('status', PropertyStatus::values()); // validation Using Enums
             $table->timestamps();
         });
     }
+
     public function down(): void
     {
         Schema::dropIfExists('properties');
