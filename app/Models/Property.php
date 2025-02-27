@@ -9,6 +9,6 @@ use Illuminate\Notifications\Notifiable;
 class Property extends Model
 {
     use HasFactory , Notifiable;
-    protected $fillable = ['title' , 'price' , 'status' , 'description' , 'location'];
 
+    protected $fillable = ['title', 'price', 'status', 'description', 'location'];
 }

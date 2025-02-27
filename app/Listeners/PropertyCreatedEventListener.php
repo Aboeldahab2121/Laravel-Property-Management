@@ -4,13 +4,10 @@ namespace App\Listeners;
 
 use App\Events\PropertyCreatedEvent;
 use Carbon\Carbon;
-use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Support\Facades\Log;
 
 class PropertyCreatedEventListener
 {
-
     public function handle(PropertyCreatedEvent $event): void
     {
         $Datetime = Carbon::now()->toDateTimeString();

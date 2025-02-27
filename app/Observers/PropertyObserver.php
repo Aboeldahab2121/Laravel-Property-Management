@@ -8,7 +8,6 @@ use Illuminate\Support\Facades\Log;
 
 class PropertyObserver
 {
-
     public function created(Property $property): void
     {
         $Datetime = Carbon::now()->toDateTimeString();
@@ -21,7 +20,7 @@ class PropertyObserver
         $Datetime = Carbon::now()->toDateTimeString();
         $logMessage = "Property {$property->title} of ID: {$property->id} was Updated on {$Datetime}";
         Log::info($logMessage);
-        if($property->isDirty('status')){
+        if ($property->isDirty('status')) {
             $newStatus = $property->status;
             $oldStatus = $property->getOriginal('status');
             $logMessage = "Property {$property->title} of ID: {$property->id} Status Updated from {$oldStatus} to {$newStatus} on {$Datetime}";
