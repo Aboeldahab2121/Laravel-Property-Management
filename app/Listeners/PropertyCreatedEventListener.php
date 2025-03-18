@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\PropertyCreatedEvent;
+use App\Jobs\SendPropertyCreatedEmail;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 
@@ -13,5 +14,6 @@ class PropertyCreatedEventListener
         $Datetime = Carbon::now()->toDateTimeString();
         $logMessage = "Property {$event->property->title} of ID: {$event->property->id} was CREATED on {$Datetime}";
         Log::info($logMessage);
+        SendPropertyCreatedEmail::dispatch($event->property);
     }
 }
