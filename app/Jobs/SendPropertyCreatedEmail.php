@@ -23,7 +23,8 @@ class SendPropertyCreatedEmail implements ShouldQueue
         $message = "New Property Created with the name: {$this->property->title}";
         Mail::raw($message, function ($message) {
             $message->to('mostafaaboeldahab20@gmail.com')
-                ->subject('Mailgun Test');
+                ->subject('Created Test Mail')
+                ->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
         });
     }
 }

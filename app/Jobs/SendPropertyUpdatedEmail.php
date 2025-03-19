@@ -23,7 +23,8 @@ class SendPropertyUpdatedEmail implements ShouldQueue
         $message = "Property Updated Successfully to {$this->property}";
         Mail::raw($message, function ($message) {
             $message->to('mostafaaboeldahab20@gmail.com')
-                ->subject('Mailgun Test');
+                ->subject('Created Test Mail')
+                ->from(env('MAIL_FROM_ADDRESS'), env('MAIL_FROM_NAME'));
         });
     }
 }
