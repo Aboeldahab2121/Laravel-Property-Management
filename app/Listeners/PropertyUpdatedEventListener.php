@@ -3,6 +3,7 @@
 namespace App\Listeners;
 
 use App\Events\PropertyUpdatedEvent;
+use App\Jobs\SendPropertyUpdatedEmail;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Log;
 
@@ -13,5 +14,6 @@ class PropertyUpdatedEventListener
         $Datetime = Carbon::now()->toDateTimeString();
         $logMessage = "Property {$event->property->title} of ID: {$event->property->id} was Updated on {$Datetime}";
         Log::info($logMessage);
+        SendPropertyUpdatedEmail::dispatch($event->property);
     }
 }

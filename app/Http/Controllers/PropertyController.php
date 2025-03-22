@@ -25,6 +25,7 @@ class PropertyController extends Controller
 
     public function store(PostPropertyRequest $request)
     {
+
         $propertyData = $request->validated();
         $property = $this->propertyService->createProperty($propertyData);
 
