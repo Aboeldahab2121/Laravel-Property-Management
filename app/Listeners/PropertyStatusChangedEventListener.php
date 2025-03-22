@@ -8,7 +8,7 @@ use Carbon\Carbon;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Support\Facades\Log;
 
-class PropertyStatusChangedEventListener implements ShouldQueue
+class PropertyStatusChangedEventListener
 {
     public function handle(PropertyStatusChangedEvent $event): void
     {
